@@ -9,7 +9,7 @@ import next from 'next'
 import { SESSION_KEY } from '../src/constants'
 
 const dev = process.env.NODE_ENV !== 'production'
-const PORT = parseInt(process.env.PORT || '3000', 10)
+const PORT = parseInt(process.env.PORT || '8000', 10)
 
 async function main() {
   const nextApp = next({ dev })
