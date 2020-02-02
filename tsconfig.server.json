@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "server",
+    "outDir": "dist",
+    "strict": false
+  },
+  "include": ["next-env.d.ts", "server/*.ts"]
+}
