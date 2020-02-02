@@ -6,6 +6,8 @@ import cookie from 'koa-cookie'
 import Router from 'koa-router'
 import next from 'next'
 
+import { SESSION_KEY } from '../src/constants'
+
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = parseInt(process.env.PORT || '3000', 10)
 
@@ -18,10 +20,16 @@ async function main() {
 
   await nextApp.prepare()
 
-  router.get('/', renderNext(nextApp, '/index'))
+  router.get(
+    '/',
+    renderNext({
+      nextApp,
+      route: '/index',
+    }),
+  )
 
-  app.use(cookie())
   app
+    .use(cookie())
     .use(
       mount('/health-check', (ctx: Koa.Context) => {
         ctx.status = 200
@@ -39,13 +47,32 @@ async function main() {
   app.listen(PORT)
 }
 
-function renderNext(nextApp: any, route: string) {
+function renderNext({
+  nextApp,
+  route,
+  isRequiredAuth,
+}: {
+  nextApp: any
+  route: string
+  isRequiredAuth?: boolean
+}) {
   return (ctx: Koa.Context) => {
     ctx.res.statusCode = 200
     ctx.respond = false
 
+    if (isRequiredAuth) {
+      authValidator(ctx)
+    }
+
     nextApp.render(ctx.req, ctx.res, route, { ...ctx.params, ...ctx.query })
   }
+}
+
+function authValidator(ctx: Koa.Context) {
+  if (!ctx.cookie[SESSION_KEY]) {
+    ctx.redirect('/signin')
+  }
+  return true
 }
 
 try {
