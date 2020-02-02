@@ -10,7 +10,7 @@
     "build-storybook": "build-storybook",
     "start": "NODE_ENV=production node dist",
     "dev": "concurrently 'tsc -w -p tsconfig.server.json' 'npm run watch-server -- --delay 1'",
-    "build": "npm run compile-server && next build",
+    "build": "npm run compile-server && next build && next export",
     "compile-server": "tsc -p tsconfig.server.json",
     "watch-server": "nodemon --exec 'node dist' --watch dist -e '*'"
   },
