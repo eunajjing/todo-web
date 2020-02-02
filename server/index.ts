@@ -2,6 +2,7 @@ import Koa from 'koa'
 import morgan from 'koa-morgan'
 import mount from 'koa-mount'
 import qs from 'koa-qs'
+import cookie from 'koa-cookie'
 import Router from 'koa-router'
 import next from 'next'
 
@@ -19,6 +20,7 @@ async function main() {
 
   router.get('/', renderNext(nextApp, '/index'))
 
+  app.use(cookie())
   app
     .use(
       mount('/health-check', (ctx: Koa.Context) => {

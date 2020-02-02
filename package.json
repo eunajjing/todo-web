@@ -28,6 +28,7 @@
   "dependencies": {
     "csstype": "^2.6.8",
     "koa": "^2.11.0",
+    "koa-cookie": "^1.0.0",
     "koa-morgan": "^1.0.1",
     "koa-mount": "^4.0.0",
     "koa-qs": "^2.0.0",
@@ -44,6 +45,7 @@
     "@storybook/addon-links": "^5.3.8",
     "@storybook/addons": "^5.3.8",
     "@storybook/react": "^5.3.8",
+    "@types/koa-cookie": "^1.0.0",
     "@types/koa-morgan": "^1.0.4",
     "@types/koa-mount": "^4.0.0",
     "@types/koa-qs": "^2.0.0",
