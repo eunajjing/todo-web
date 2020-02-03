@@ -20,13 +20,28 @@ async function main() {
 
   await nextApp.prepare()
 
-  router.get(
-    '/',
-    renderNext({
-      nextApp,
-      route: '/index',
-    }),
-  )
+  router
+    .get(
+      '/',
+      renderNext({
+        nextApp,
+        route: '/index',
+      }),
+    )
+    .get(
+      '/signin',
+      renderNext({
+        nextApp,
+        route: '/signin',
+      }),
+    )
+    .get(
+      '/signup',
+      renderNext({
+        nextApp,
+        route: '/signup',
+      }),
+    )
 
   app
     .use(cookie())
