@@ -1,5 +1,25 @@
 # TODO-WEB
 
+## 실행 방법
+
+1. 패키지 설치
+
+  ```shell
+  npm install
+  ```
+
+2. next 페이지 생성
+
+  ```shell
+  npm run build
+  ```
+
+3. 실행
+
+  ```shell
+  npm start
+  ```
+
 ## Work Convention
 
 - branch 전략은 [Github Flow](https://guides.github.com/introduction/flow/) 를 이용합니다.

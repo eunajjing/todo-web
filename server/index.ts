@@ -6,7 +6,7 @@ import cookie from 'koa-cookie'
 import Router from 'koa-router'
 import next from 'next'
 
-import { SESSION_KEY } from '../src/constants'
+const SESSION_KEY = 'x-todo-session'
 
 const dev = process.env.NODE_ENV !== 'production'
 const PORT = parseInt(process.env.PORT || '8000', 10)
