@@ -74,3 +74,4 @@ typings/
 .vscode
 .DS_Store
 dist
+out
